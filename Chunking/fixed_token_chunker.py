@@ -2,9 +2,11 @@
 # Original code can be found at: https://github.com/langchain-ai/langchain/blob/master/libs/text-splitters/langchain_text_splitters/base.py
 # License: MIT License
 
+# The following code is credited to (Smith and Troynikov)
 from abc import ABC, abstractmethod
 from enum import Enum
 import logging
+
 from typing import (
     AbstractSet,
     Any,
@@ -19,9 +21,10 @@ from typing import (
     TypeVar,
     Union,
 )
+
 from Chunking.base_chunker import BaseChunker
 
-from dataclasses import dataclass # This import was changed.
+from dataclasses import dataclass  # This import was changed.
 
 logger = logging.getLogger(__name__)
 
@@ -40,9 +43,10 @@ class TextSplitter(BaseChunker, ABC):
             add_start_index: bool = False,
             strip_whitespace: bool = True,
     ) -> None:
-        """Create a new TextSplitter.
+        """
+        Create a new TextSplitter.
 
-        Args:
+        @params:
             chunk_size: Maximum size of chunks to return
             chunk_overlap: Overlap in characters between chunks
             length_function: Function that measures the length of given chunks

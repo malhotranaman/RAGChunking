@@ -2,7 +2,7 @@
 This project implements a retrieval pipeline using an open-source embedding model and evaluates its retrieval quality.
 
 ### There are four main elements:
-1. Code (Smith and Troynikov): Implementations for the chunker and evaluation of the chunking performance
+1. Code: Implementations for the chunker and evaluation of the chunking performance
    1. In particular, the class fixed_token_chunker.py and single_corpus_evaluation.py contain these respectively.
 2. Experimentation: control.py contains a retrieval evaluation pipeline. 
    1. Init, there is an evaluate function which takes Chunker, Embedding function and Number of retrieved chunks as parameters.
@@ -13,4 +13,6 @@ This project implements a retrieval pipeline using an open-source embedding mode
    2. Experimentation data graphs show visualizations from the results generated. 
    3. Experimentation data is contained in files which contain "experiment" in their title. These data are generated from experimentation scripts in control.
 
-Citations found in the analysis file. 
+#### Notes
+- Citations used in comments are found in the analysis file. 
+- questions_df.csv is shortened to only include questions relevant for "state of union". 

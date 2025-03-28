@@ -2,29 +2,49 @@ from Chunking.fixed_token_chunker import FixedTokenChunker
 import chromadb.utils.embedding_functions as embedding_functions
 from Evaluation.single_corpus_evaluation import SingleCorpusEvaluation
 
-# Retrieval Pipeline-File
-def evaluate(n_results: int = 10, chunker: FixedTokenChunker = FixedTokenChunker(chunk_size=512, chunk_overlap=50), embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction('sentence-transformers/multi-qa-mpnet-base-dot-v1')):
-    # Initialize evaluation with paths
+"""
+    Retrieval Pipeline
+
+    @Params
+    n_results : int
+        Num of chunks to retrieve per question
+    chunker
+        The text chunker used
+    embedding_function : object
+        The embedding function for retrieval
+        
+    Note: A standard value is given for each hyper-parameter
+ """
+
+def evaluate(n_results: int = 10, chunker: FixedTokenChunker = FixedTokenChunker(chunk_size=512, chunk_overlap=50),
+             embedding_function=embedding_functions.SentenceTransformerEmbeddingFunction(
+                 'sentence-transformers/multi-qa-mpnet-base-dot-v1')):
+
+    # Initialize evaluation with paths to "state of union" data
     evaluation = SingleCorpusEvaluation(
         questions_csv_path="Data/questions_df.csv",
         corpus_path="Data/state_of_the_union.md"
     )
 
-    # Run evaluation
+    # Run evaluation, passing evaluation parameters
     results = evaluation.evaluate_chunker(
         chunker=chunker,
         embedding_function=embedding_function,
         n_results=n_results
     )
 
+    # Log precision and recall for current evaluation
     print(f"Precision: {results['precision_mean']:.4f} ± {results['precision_std']:.4f}")
     print(f"Recall: {results['recall_mean']:.4f} ± {results['recall_std']:.4f}")
+
     return results
 
+# Script for testing Precision and Recall Tradeoff
+# Independent variable: Number of results
 def iterateNumResults():
     results = {}
 
-    # Open file for writing
+    # Open file for writing results
     with open("ComputedMetrics/num_results_experiment_1.txt", 'w') as f:
         # Iterate through different n_results values
         for n in range(1, 21):
@@ -41,13 +61,18 @@ def iterateNumResults():
 
     return results
 
+# Script for Chunking Parameter Optimization
+# Independent variable: F1 score - (calculated with chunk_sizes and overlaps)
 def optimalChunkAndOverlap():
+    #Cayley table or grid of chunk_size and overlap combinations
     chunk_sizes = [128, 256, 512, 1024]
     overlaps = [0, 50, 100, 200]
+
     grid_results = {}
 
     # Open file for writing
     with open("ComputedMetrics/optimal_chunk_overlap_experiment_2", 'w') as f:
+        # Iterate through all grid combinations
         for size in chunk_sizes:
             for overlap in overlaps:
                 if overlap >= size:  # Skip invalid combinations
@@ -73,7 +98,10 @@ def optimalChunkAndOverlap():
 
     return grid_results
 
+# Script for Embedding Model Comparison
+# Independent variable: Embedding-model, not quantitative
 def compareEmbeddingFunctions():
+    # Map of model_names to embedding models
     import chromadb.utils.embedding_functions as embedding_functions
     embedding_functions = {
         "mpnet-base": embedding_functions.SentenceTransformerEmbeddingFunction(model_name="all-mpnet-base-v2"),
@@ -85,7 +113,9 @@ def compareEmbeddingFunctions():
 
     # Open file for writing
     with open("ComputedMetrics/compare_embeddings_experiment_3", 'w') as f:
+        # Iterate through all embedding models
         for name, emb_func in embedding_functions.items():
+            # Calculate metrics corresponding to the current model
             metrics = evaluate(
                 chunker=FixedTokenChunker(
                     chunk_size=512,
@@ -106,19 +136,32 @@ def compareEmbeddingFunctions():
             result_text += f"Recall: {r:.4f} ± {metrics['recall_std']:.4f}\n"
             result_text += f"F1 Score: {f1:.4f}\n\n"
 
-            # Store in results dictionary and write to file
+            # Store in results dictionary and write to file corresponding to model name
             model_results[name] = {
                 'precision': p,
                 'recall': r,
                 'f1': f1
             }
+
             f.write(result_text)
 
+    return model_results
+
 if __name__ == '__main__':
-    # Experimentation Scripts
+    """
+        Experimentation Script calls save results to 'ComputedMetrics' folder.
+        Experiments corresponds to Labeling of Report
+    """
+    # Experiment 1
     iterateNumResults()
+
+    # Experiment 2
     optimalChunkAndOverlap()
+
+    # Experiment 3
     compareEmbeddingFunctions()
 
-    #Sample single run
-    evaluate(n_results=10, chunker=FixedTokenChunker(chunk_size=512, chunk_overlap=50))
+    #Sample Single Run with Exposed Hyperparameters
+    evaluate(n_results=10, chunker=FixedTokenChunker(chunk_size=512, chunk_overlap=50),
+             embedding_function=embedding_functions.SentenceTransformerEmbeddingFunction(
+                 'sentence-transformers/multi-qa-mpnet-base-dot-v1'))

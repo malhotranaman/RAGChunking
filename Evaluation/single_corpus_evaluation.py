@@ -112,7 +112,7 @@ class SingleCorpusEvaluation:
             "recall": recall*100
         }
 
-    # Helper functions for range calculations - from website implementation
+    # Helper functions for range calculations - from website implementation (Smith and Troynikov)
     def _sum_ranges(self, ranges):
         return sum(end - start for start, end in ranges)
 

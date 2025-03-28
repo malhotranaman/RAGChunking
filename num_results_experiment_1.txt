@@ -1,0 +1,80 @@
+Number of results: 1
+Precision: 3.5738 ± 5.3153
+Recall: 41.9350 ± 47.3211
+
+Number of results: 2
+Precision: 2.7414 ± 2.9864
+Recall: 64.0142 ± 46.0224
+
+Number of results: 3
+Precision: 1.9245 ± 1.9634
+Recall: 68.8147 ± 44.6146
+
+Number of results: 4
+Precision: 1.5953 ± 1.4305
+Recall: 76.7094 ± 40.3865
+
+Number of results: 5
+Precision: 1.3591 ± 1.1156
+Recall: 81.9726 ± 36.3623
+
+Number of results: 6
+Precision: 1.1442 ± 0.9216
+Recall: 83.7288 ± 35.1586
+
+Number of results: 7
+Precision: 0.9910 ± 0.7832
+Recall: 84.7098 ± 34.5536
+
+Number of results: 8
+Precision: 0.8688 ± 0.6862
+Recall: 84.7098 ± 34.5536
+
+Number of results: 9
+Precision: 0.7970 ± 0.5956
+Recall: 88.3370 ± 30.8744
+
+Number of results: 10
+Precision: 0.7312 ± 0.5239
+Recall: 90.0977 ± 28.0300
+
+Number of results: 11
+Precision: 0.6657 ± 0.4760
+Recall: 90.0977 ± 28.0300
+
+Number of results: 12
+Precision: 0.6112 ± 0.4370
+Recall: 90.0977 ± 28.0300
+
+Number of results: 13
+Precision: 0.5823 ± 0.4108
+Recall: 92.7309 ± 25.0304
+
+Number of results: 14
+Precision: 0.5538 ± 0.3714
+Recall: 96.3355 ± 18.1885
+
+Number of results: 15
+Precision: 0.5235 ± 0.3414
+Recall: 97.6513 ± 14.3929
+
+Number of results: 16
+Precision: 0.4944 ± 0.3168
+Recall: 98.6842 ± 11.3951
+
+Number of results: 17
+Precision: 0.4663 ± 0.3005
+Recall: 98.6842 ± 11.3951
+
+Number of results: 18
+Precision: 0.4415 ± 0.2847
+Recall: 98.6842 ± 11.3951
+
+Number of results: 19
+Precision: 0.4193 ± 0.2700
+Recall: 98.6842 ± 11.3951
+
+Number of results: 20
+Precision: 0.3992 ± 0.2562
+Recall: 98.6842 ± 11.3951
+

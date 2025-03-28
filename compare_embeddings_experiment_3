@@ -1,0 +1,15 @@
+Embedding model: mpnet-base
+Precision: 1.5010 ± 1.0818
+Recall: 90.9140 ± 26.8961
+F1 Score: 2.9532
+
+Embedding model: MiniLM
+Precision: 1.4613 ± 1.0711
+Recall: 89.6053 ± 29.4921
+F1 Score: 2.8757
+
+Embedding model: iniLM-L3-v2
+Precision: 1.0493 ± 1.0814
+Recall: 64.6492 ± 46.3680
+F1 Score: 2.0650
+

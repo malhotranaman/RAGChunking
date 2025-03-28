@@ -1,0 +1,75 @@
+Chunk size: 128, Overlap: 0
+Precision: 4.6703 ± 3.8584
+Recall: 75.3256 ± 39.9834
+F1 Score: 8.7953
+
+Chunk size: 128, Overlap: 50
+Precision: 4.6166 ± 3.5425
+Recall: 78.1477 ± 37.6333
+F1 Score: 8.7182
+
+Chunk size: 128, Overlap: 100
+Precision: 4.7153 ± 3.5917
+Recall: 80.3662 ± 37.2306
+F1 Score: 8.9080
+
+Chunk size: 256, Overlap: 0
+Precision: 2.7120 ± 1.9279
+Recall: 86.8704 ± 32.3254
+F1 Score: 5.2598
+
+Chunk size: 256, Overlap: 50
+Precision: 2.6721 ± 2.2285
+Recall: 80.8154 ± 35.9753
+F1 Score: 5.1732
+
+Chunk size: 256, Overlap: 100
+Precision: 2.6540 ± 2.0635
+Recall: 84.3436 ± 33.6331
+F1 Score: 5.1462
+
+Chunk size: 256, Overlap: 200
+Precision: 2.6371 ± 2.1119
+Recall: 82.4505 ± 35.1730
+F1 Score: 5.1107
+
+Chunk size: 512, Overlap: 0
+Precision: 1.4198 ± 1.0582
+Recall: 86.8966 ± 32.3184
+F1 Score: 2.7939
+
+Chunk size: 512, Overlap: 50
+Precision: 1.3591 ± 1.1156
+Recall: 81.9726 ± 36.3623
+F1 Score: 2.6738
+
+Chunk size: 512, Overlap: 100
+Precision: 1.3597 ± 1.1547
+Recall: 80.2477 ± 38.3006
+F1 Score: 2.6741
+
+Chunk size: 512, Overlap: 200
+Precision: 1.3142 ± 1.0899
+Recall: 84.4130 ± 35.1043
+F1 Score: 2.5881
+
+Chunk size: 1024, Overlap: 0
+Precision: 0.7292 ± 0.5529
+Recall: 87.3432 ± 32.2619
+F1 Score: 1.4463
+
+Chunk size: 1024, Overlap: 50
+Precision: 0.7567 ± 0.5435
+Recall: 92.1053 ± 26.9657
+F1 Score: 1.5011
+
+Chunk size: 1024, Overlap: 100
+Precision: 0.6857 ± 0.5679
+Recall: 81.9117 ± 38.1679
+F1 Score: 1.3600
+
+Chunk size: 1024, Overlap: 200
+Precision: 0.6512 ± 0.5757
+Recall: 80.9163 ± 38.4122
+F1 Score: 1.2919
+

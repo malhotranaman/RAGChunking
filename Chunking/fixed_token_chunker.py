@@ -19,7 +19,7 @@ from typing import (
     TypeVar,
     Union,
 )
-from base_chunker import BaseChunker
+from Chunking.base_chunker import BaseChunker
 
 from dataclasses import dataclass # This import was changed.
 

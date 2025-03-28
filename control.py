@@ -1,16 +1,13 @@
-import numpy as np
-from matplotlib import pyplot as plt
-from torch.nn.functional import embedding
-from fixed_token_chunker import FixedTokenChunker
+from Chunking.fixed_token_chunker import FixedTokenChunker
 import chromadb.utils.embedding_functions as embedding_functions
-from single_corpus_evaluation import SingleCorpusEvaluation
+from Evaluation.single_corpus_evaluation import SingleCorpusEvaluation
 
 # Retrieval Pipeline-File
 def evaluate(n_results: int = 10, chunker: FixedTokenChunker = FixedTokenChunker(chunk_size=512, chunk_overlap=50), embedding_function = embedding_functions.SentenceTransformerEmbeddingFunction('sentence-transformers/multi-qa-mpnet-base-dot-v1')):
     # Initialize evaluation with paths
     evaluation = SingleCorpusEvaluation(
-        questions_csv_path="questions_df.csv",
-        corpus_path="state_of_the_union.md"
+        questions_csv_path="Data/questions_df.csv",
+        corpus_path="Data/state_of_the_union.md"
     )
 
     # Run evaluation
@@ -28,7 +25,7 @@ def iterateNumResults():
     results = {}
 
     # Open file for writing
-    with open("num_results_experiment_1.txt", 'w') as f:
+    with open("ComputedMetrics/num_results_experiment_1.txt", 'w') as f:
         # Iterate through different n_results values
         for n in range(1, 21):
             metrics = evaluate(n_results=n)
@@ -50,7 +47,7 @@ def optimalChunkAndOverlap():
     grid_results = {}
 
     # Open file for writing
-    with open("optimal_chunk_overlap_experiment_2", 'w') as f:
+    with open("ComputedMetrics/optimal_chunk_overlap_experiment_2", 'w') as f:
         for size in chunk_sizes:
             for overlap in overlaps:
                 if overlap >= size:  # Skip invalid combinations
@@ -87,7 +84,7 @@ def compareEmbeddingFunctions():
     model_results = {}
 
     # Open file for writing
-    with open("compare_embeddings_experiment_3", 'w') as f:
+    with open("ComputedMetrics/compare_embeddings_experiment_3", 'w') as f:
         for name, emb_func in embedding_functions.items():
             metrics = evaluate(
                 chunker=FixedTokenChunker(
